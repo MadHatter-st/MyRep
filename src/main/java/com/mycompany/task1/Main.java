@@ -1,16 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.mycompany.task1;
 
+import java.util.Scanner;
 import java.util.Random;
 
-/**
- *
- * @author Nikita
- */
 public class Main {
     public static void main(String[] args){
         PlayingCard koloda[] = new PlayingCard[
@@ -32,9 +25,29 @@ public class Main {
            koloda[i1]=koloda[i2];
            koloda[i2]=temp;
        }
-       for (int i=1;koloda.length>=i;i++){
-                System.out.println(koloda[i]);
-} 
+       
+        Scanner in = new Scanner(System.in);
+        System.out.print("Input a number: ");
+        int num = in.nextInt();
+        
+    
+    PlayingCard razdacha[] = new PlayingCard[num*5];
+    if((num*5)>koloda.length)System.out.print("Ошибка!!");
+    else {
+        for(int j=koloda.length-1,i=0;i<5;i++){
+            for(int k=i,l=1;l<=num;k=k+(5),l++){
+                    razdacha[k] = koloda[j]; 
+                    j--;
+            }  
+        }
+    }
+    
+        for(int k=0,i=0;i<num;i++){
+        System.out.println(" ");    
+        System.out.println("Игрок"+" "+(i+1));
+            for(int j=0;j<5;j++,k++){
+              System.out.println(razdacha[k]);  
+            }
+        }
+    }
 }
-}
-
