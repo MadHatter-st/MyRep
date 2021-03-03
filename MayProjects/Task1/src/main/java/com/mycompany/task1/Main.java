@@ -25,10 +25,13 @@ public class Main {
            koloda[i1]=koloda[i2];
            koloda[i2]=temp;
        }
-       
-        Scanner in = new Scanner(System.in);
-        System.out.print("Input a number: ");
-        int num = in.nextInt();
+       Scanner input = new Scanner(System.in);
+       System.out.println("Введите кол-во игроков в диапазоне от 1-6:");
+        int num = input.nextInt();
+        while(num < 0 || num > 6){
+            System.out.println("Указано неверное кол-во игроков. Повторите ввод:");
+            num = input.nextInt();
+        }
         
     
     PlayingCard razdacha[] = new PlayingCard[num*5];
