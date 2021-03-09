@@ -17,14 +17,7 @@ public class Main {
         System.out.println("Введите максимальный перепад трех ближайших вершин: ");
         int step = in.nextInt();
         Climber man = new Climber(rout, maxh, step);
+        man.getrock();
        
-       Random random = new Random(); 
-       int[] Rock = new int[man.getRout()];
-       for(int i=0;i<man.getRout();i++){
-           Rock[i]= random.nextInt(man.getMaxh());
-       }
-       for(int i=0;i<man.getRout();i++){
-          System.out.print(Rock[i]);
-       }
     }
 }
