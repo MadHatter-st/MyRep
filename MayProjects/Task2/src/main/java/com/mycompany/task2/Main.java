@@ -9,15 +9,17 @@ public class Main {
         
 
         Scanner in = new Scanner(System.in);
+        Climber man = new Climber();
 
         System.out.println("Введите длину маршута: ");
         int rout = in.nextInt();
+        man.setRout(rout);
         System.out.println("Введите максимальную вершину: ");
         int maxh = in.nextInt();
+        man.setMaxh(maxh);
         System.out.println("Введите максимальный перепад трех ближайших вершин: ");
         int step = in.nextInt();
-        if(step>maxh)step=maxh/2;
-        Climber man = new Climber(rout, maxh, step);
+        man.setStep(step);
         man.getrock();
        
     }

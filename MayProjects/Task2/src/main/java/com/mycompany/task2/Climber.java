@@ -33,12 +33,10 @@ public class Climber {
     }
 
     public void setStep(int step) {
-         if (step < maxh) {
-            this.step = step;
-        }
-        else {
-            this.step = maxh;
-        }this.step = step;
+         if(step>this.maxh){
+           this.step=this.maxh/2;  
+         }else
+         this.step = step;
     }
     
     public int getRout() {
@@ -53,11 +51,11 @@ public class Climber {
         return step;
     }
     
-    public void getrock(){
+    public void getrock(){    //Метод создания пути
         Random random = new Random(); 
        int[] Rock = new int[this.getRout()];
        for(int i=0;i<this.getRout();i++){
-           Rock[i]= random.nextInt(this.getMaxh());
+           Rock[i]= random.nextInt(this.getMaxh()); //Создали случайный путь
        }
        
        
@@ -74,7 +72,14 @@ public class Climber {
                         Rock[i+1]=Rock[i+1]+this.step/2;
                      }    
             }while(Math.abs(Rock[i]-Rock[i+1])>this.step);
-        }    
+        }  
+        
+        for(int i=0;i<Rock.length;i++){
+            if(Rock[i]>this.maxh){
+                Rock[i]=this.maxh;
+            }
+        }                              // Подогнали его под параметры скалолаза
+        
        int max=Rock[0];
         for (int i=1;i<Rock.length;i++){
             if (Rock[i-1]<Rock[i]){
@@ -85,7 +90,7 @@ public class Climber {
         for (int i=0;i<InvertRock.length;i++){
             InvertRock[i]=max-Rock[i];
         }
-        System.out.println("/** out");
+        System.out.println("/** out"); //начало вывода
         System.out.print(" *    ");
         boolean k=true;
         for(int j=0;j<max;j++){
@@ -109,6 +114,8 @@ public class Climber {
           System.out.print(Rock[i]);
        }
        System.out.print("\n");
-       System.out.print(" */");
+       System.out.print(" */"); //конец вывода
     }
-}
+} // Программа работает не всегда корректно: для одних и тех же входных данных
+// результаты разные. При выводе могут возникнуть проблемы если 
+// максимальная вершина >=10.
