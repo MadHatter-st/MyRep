@@ -16,6 +16,7 @@ public class Main {
         int maxh = in.nextInt();
         System.out.println("Введите максимальный перепад трех ближайших вершин: ");
         int step = in.nextInt();
+        if(step>maxh)step=maxh/2;
         Climber man = new Climber(rout, maxh, step);
         man.getrock();
        
